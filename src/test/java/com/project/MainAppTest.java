@@ -32,4 +32,9 @@ public class MainAppTest {
 	public void testWithPosNeg() {
 		assertEquals(0,map.addition(-5, 5));
 	}
+	
+	@Test 
+	public void testMultiplyWithTwoPositive() {
+		assertEquals(27,map.multiply(3,9));
+	}
 }

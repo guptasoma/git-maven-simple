@@ -38,8 +38,4 @@ public class MainAppTest {
 		assertEquals(27,map.multiply(3,9));
 	}
 	
-	@Test 
-	public void testMultiplyWithTwoNegative() {
-		assertEquals(10,map.multiply(-5,-2));
-	}
 }

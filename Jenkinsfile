@@ -33,4 +33,9 @@ pipeline {
             }
         }
     }
+    post {
+        always {
+                echo 'I will always execute this...'
+        }
+    }
 }

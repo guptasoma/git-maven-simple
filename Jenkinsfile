@@ -8,8 +8,13 @@ pipeline {
             }
         }
         stage('Test') {
+            when{
+                expression{
+                    BRANCH_NAME=='dev'   
+                }
+            }
             steps {
-                echo 'Testing..'
+                echo 'Testing..only dev branch'
             }
         }
         stage('Deploy') {

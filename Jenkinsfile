@@ -23,7 +23,8 @@ pipeline {
                 }
             }
             steps {
-                echo 'Testing..only dev branch'
+                echo 'Testing..only master branch'
+                sh 'mvn test'
                 echo "Testing using version ${params.VERSION}"
             }
         }

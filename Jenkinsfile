@@ -15,7 +15,7 @@ pipeline {
     	stage('Something'){
     		when {
 				expression{
-					env.SHOW_NEXT.toBoolean() = true
+					env.SHOW_NEXT.toBoolean() == true
 				}				
 			}
 			steps{

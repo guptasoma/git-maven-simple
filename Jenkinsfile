@@ -15,6 +15,11 @@ pipeline {
             steps {
                 echo "Building.. with build version ${NEW_VERSION}"
                 bat 'mvn -B -DskipTests clean package'
+                if(isUnix()) {
+                	echo 'Unix'
+                }else{
+                	echo 'Windows'
+                }
             }
         }
         stage('Test') {

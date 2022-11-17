@@ -24,7 +24,7 @@ pipeline {
             }
             steps {
                 echo 'Testing..only master branch'
-                test
+                bat 'mvn test'
                 echo "Testing using version ${params.VERSION}"
             }
         }

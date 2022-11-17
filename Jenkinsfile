@@ -14,6 +14,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo "Building.. with build version ${NEW_VERSION}"
+                bat 'mvn -B -DskipTests clean package'
             }
         }
         stage('Test') {
@@ -26,6 +27,11 @@ pipeline {
                 echo 'Testing..only master branch'
                 bat 'mvn test'
                 echo "Testing using version ${params.VERSION}"
+            } 
+            post {
+                always {
+                    junit 'target/surefire-reports/*.xml' 
+                }
             }
         }
         stage('Deploy') {

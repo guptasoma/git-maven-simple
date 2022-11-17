@@ -7,9 +7,10 @@ pipeline {
     }
  //parameters in Jenkins File
     parameters{
-        string(name:'Java Jenkins Example',defaultValue:'',description:'')
+        string(name:'DEPLOY_STRING',defaultValue:'Deployed successfully',description:'')
         choice(name:'VERSION',choices:['1.1.0','1.2.0','1.3.0'],description:'')
         booleanParam(name:'executeTests',defaultValue:true,description:'')
+        text(name:'DEPLOY_TEXT',defaultValue:'Never\nGive\nUp',description:'')
     }
     stages {
     	stage('Something'){
@@ -56,12 +57,14 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo "Deploying....${BRANCH_NAME}"
+                echo "${params.DEPLOY_STRING}"
             }
         }
     }
     post {
         always {
                 echo 'I will always execute this...'
+                echo "${params.DEPLOY_TEXT}"
         }
     }
 }

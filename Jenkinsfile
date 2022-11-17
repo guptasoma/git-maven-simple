@@ -2,7 +2,8 @@ pipeline {
     agent any
 // custom environment variable
     environment{
-        NEW_VERSION='1.3.0'   
+        NEW_VERSION='1.3.0' 
+        SHOW_NEXT='true'  
     }
  //parameters in Jenkins File
     parameters{
@@ -11,6 +12,16 @@ pipeline {
         booleanParam(name:'executeTests',defaultValue:true,description:'')
     }
     stages {
+    	stage('Something'){
+    		when {
+				expression{
+					env.TRIGGER_NEXT.toBoolean() = true
+				}				
+			}
+			steps{
+				echo 'Something is working'
+			}
+    	}
         stage('Build') {
             steps {
                 echo "Building.. with build version ${NEW_VERSION}"
